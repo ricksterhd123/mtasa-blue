@@ -149,6 +149,8 @@ void CClientProjectile::DoPulse()
 
     // Update our position/rotation if we're attached
     DoAttaching();
+    // Sync (twice at first)
+    g_pClientGame->SendProjectileSync(this);
 
     if (m_bCorrected == false && m_pProjectile != NULL && GetWeaponType() == eWeaponType::WEAPONTYPE_REMOTE_SATCHEL_CHARGE)
     {
